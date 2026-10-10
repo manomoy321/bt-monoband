@@ -1,8 +1,9 @@
 # BTmono (`bt-monoband`) 🎧 — Free & Open-Source Bluetooth Mono Audio Router for Android
 
-[![Android Compatibility](https://img.shields.io/badge/Android-5.0_to_16+_(API_21--35+)-3DDC84?logo=android&logoColor=white)](https://github.com/)
-[![License](https://img.shields.io/badge/License-Open_Source-blue.svg)](LICENSE)
-[![Latest Release](https://img.shields.io/badge/Release-v2026.1_Unlocked-brightgreen)](BTmono-2026-Upgraded.apk)
+[![Android Compatibility](https://img.shields.io/badge/Android-5.0_to_16+_(API_21--35+)-3DDC84?logo=android&logoColor=white)](https://github.com/manomoy321/bt-monoband)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/manomoy321/bt-monoband/blob/main/LICENSE)
+[![Latest Release](https://img.shields.io/badge/Release-v2026.1_Unlocked-brightgreen)](https://github.com/manomoy321/bt-monoband/releases/tag/v2026.1)
+[![Download APK](https://img.shields.io/badge/Download-BTmono__v2026.1.apk-blue?logo=android)](https://github.com/manomoy321/bt-monoband/releases/download/v2026.1/BTmono-2026-Upgraded.apk)
 [![Zero Ads](https://img.shields.io/badge/Ads-Completely_Removed-success)](#)
 [![No Paywalls](https://img.shields.io/badge/Premium-100%25_Free-orange)](#)
 
@@ -13,7 +14,9 @@
 
 ## 📥 Direct Download
 
-👉 **[Download BTmono-2026-Upgraded.apk (v2026.1)](BTmono-2026-Upgraded.apk)** *(2.23 MiB — Signed with v1, v2, v3 schemes, valid through 2054)*
+* 🚀 **[Direct Download: BTmono-2026-Upgraded.apk (v2026.1 Release)](https://github.com/manomoy321/bt-monoband/releases/download/v2026.1/BTmono-2026-Upgraded.apk)** *(2.23 MiB — Signed with v1, v2, v3 schemes, valid through 2054)*
+* 📦 **[View GitHub Release v2026.1](https://github.com/manomoy321/bt-monoband/releases/tag/v2026.1)**
+* 📁 **[Download Directly from Repository Tree](https://github.com/manomoy321/bt-monoband/raw/main/BTmono-2026-Upgraded.apk)**
 
 ---
 
