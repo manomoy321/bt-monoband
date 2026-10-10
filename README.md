@@ -24,13 +24,17 @@
 
 By default, stock Android camera apps (including Samsung Camera, Google Pixel Camera, Xiaomi, etc.) **ignore connected Bluetooth headphones** when filming video, forcing audio recording through the phone's built-in phone body microphones.
 
-### How BT-Mono Fixes This:
-1. **Hardware SCO Mic Lock**: `BT-Mono` initiates a bidirectional Bluetooth SCO link with `MODE_IN_COMMUNICATION` and an active `AudioRecord` background stream. This prevents the Android Audio HAL from powering down or dropping the Bluetooth microphone when you switch to your camera.
-2. **Auto-Granted Runtime Permissions**: Prompts for `RECORD_AUDIO` and `BLUETOOTH_CONNECT` upon opening, eliminating silent permission blocks on modern Android versions.
-3. **Works While Filming Video**: Keep `BT-Mono` turned **On**, open your phone's default Camera app, and begin recording video — audio is captured directly from your wireless headset.
-
-> **💡 Samsung Galaxy Camera Tip (One UI 5 / 6 / 7)**:
-> In the Samsung Camera app, you can also swipe to **Pro Video** mode: tap the **MIC** button at the bottom and select **BT** (Bluetooth) for high-definition studio microphone capture!
+### How BT-Mono Seamlessly Cooperates with Default Camera Apps:
+1. **Zero Call Conflict (`MODE_NORMAL` Guard)**:
+   * Previous legacy apps forced `MODE_IN_COMMUNICATION` / `MODE_IN_CALL`, which triggered Samsung's security error: *"Cannot record video while in a call"*.
+   * `BT-Mono` maintains `MODE_NORMAL` so the camera app **never blocks video recording** and functions smoothly without showing call alerts.
+2. **Unblocked Microphone Hardware**:
+   * Does not hold an exclusive background `AudioRecord` lock, ensuring the camera application has full, unhindered access to the microphone hardware.
+3. **Hardware SCO Communication Binding**:
+   * Uses `setCommunicationDevice` (API 31+) and `startBluetoothSco()` to designate the Bluetooth headset as the primary audio communication endpoint.
+4. **Samsung Galaxy One UI Camera Compatibility**:
+   * **In Standard Video Mode**: Records video seamlessly without call warnings.
+   * **In Pro Video Mode**: Open Samsung Camera ➡️ Swipe to **MORE** ➡️ Tap **PRO VIDEO** ➡️ Tap **MIC** at the bottom ➡️ Select **BT** (Bluetooth) for dedicated wireless microphone recording.
 
 ---
 

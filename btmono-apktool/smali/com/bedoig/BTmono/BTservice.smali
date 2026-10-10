@@ -118,27 +118,10 @@
     .line 68
     invoke-virtual {v1}, Landroid/media/AudioManager;->startBluetoothSco()V
 
-    .line 71
-    sget v2, Lcom/bedoig/BTmono/BTservice;->currentapiVersion:I
+    const/4 v2, 0x0
 
-    const/16 v3, 0xb
-
-    if-lt v2, v3, :cond_0
-
-    const/4 v2, 0x3
-
-    .line 73
     invoke-virtual {v1, v2}, Landroid/media/AudioManager;->setMode(I)V
 
-    goto :goto_0
-
-    :cond_0
-    const/4 v2, 0x2
-
-    .line 76
-    invoke-virtual {v1, v2}, Landroid/media/AudioManager;->setMode(I)V
-
-    .line 96
     :goto_0
     invoke-static {p0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
