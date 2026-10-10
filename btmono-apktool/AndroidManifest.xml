@@ -47,7 +47,6 @@
         <service
             android:label="BTservice"
             android:exported="false"
-            android:foregroundServiceType="connectedDevice|microphone"
             android:name="com.bedoig.BTmono.BTservice"/>
 
         <activity

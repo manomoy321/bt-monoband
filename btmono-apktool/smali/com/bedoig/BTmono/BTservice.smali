@@ -27,7 +27,6 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 27
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
     sput v0, Lcom/bedoig/BTmono/BTservice;->currentapiVersion:I
@@ -38,7 +37,6 @@
 .method public constructor <init>()V
     .locals 0
 
-    .line 24
     invoke-direct {p0}, Landroid/app/Service;-><init>()V
 
     return-void
@@ -47,7 +45,7 @@
 .method private createNotificationChannel()V
     .locals 4
 
-    .line 33
+    :try_start_0
     sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
     const/16 v1, 0x1a
@@ -58,25 +56,27 @@
 
     const/4 v1, 0x3
 
-    .line 37
     new-instance v2, Landroid/app/NotificationChannel;
 
     const-string v3, "Channel_1"
 
     invoke-direct {v2, v3, v0, v1}, Landroid/app/NotificationChannel;-><init>(Ljava/lang/String;Ljava/lang/CharSequence;I)V
 
-    .line 41
-    const-class v0, Landroid/app/NotificationManager;
+    const-string v0, "notification"
 
-    invoke-virtual {p0, v0}, Lcom/bedoig/BTmono/BTservice;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
+    invoke-virtual {p0, v0}, Lcom/bedoig/BTmono/BTservice;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/app/NotificationManager;
 
-    .line 42
-    invoke-virtual {v0, v2}, Landroid/app/NotificationManager;->createNotificationChannel(Landroid/app/NotificationChannel;)V
+    if-eqz v0, :cond_0
 
+    invoke-virtual {v0, v2}, Landroid/app/NotificationManager;->createNotificationChannel(Landroid/app/NotificationChannel;)V
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+
+    :catch_0
     :cond_0
     return-void
 .end method
@@ -96,220 +96,169 @@
 
     invoke-direct {p0}, Lcom/bedoig/BTmono/BTservice;->createNotificationChannel()V
 
-    invoke-static {p0}, Lcom/bedoig/BTmono/MicKeeper;->start(Landroid/content/Context;)V
+    :try_start_fg
+    new-instance v0, Landroid/content/Intent;
 
-    const/4 v0, 0x1
+    const-class v1, Lcom/bedoig/BTmono/BTmono;
 
-    .line 63
-    invoke-static {v0}, Lcom/bedoig/BTmono/BTmonoVars;->setState(I)V
+    invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    const-string v1, "audio"
+    const/4 v1, 0x0
 
-    .line 65
-    invoke-virtual {p0, v1}, Lcom/bedoig/BTmono/BTservice;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    const/high16 v2, 0xc000000
+
+    invoke-static {p0, v1, v0, v2}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v0
+
+    new-instance v1, Landroid/support/v4/app/NotificationCompat$Builder;
+
+    const-string v2, "Channel_1"
+
+    invoke-direct {v1, p0, v2}, Landroid/support/v4/app/NotificationCompat$Builder;-><init>(Landroid/content/Context;Ljava/lang/String;)V
+
+    const v2, 0x7f07005c
+
+    invoke-virtual {v1, v2}, Landroid/support/v4/app/NotificationCompat$Builder;->setSmallIcon(I)Landroid/support/v4/app/NotificationCompat$Builder;
 
     move-result-object v1
 
-    check-cast v1, Landroid/media/AudioManager;
+    const-string v2, "BT-Mono"
 
-    .line 67
-    invoke-virtual {v1, v0}, Landroid/media/AudioManager;->setBluetoothScoOn(Z)V
+    invoke-virtual {v1, v2}, Landroid/support/v4/app/NotificationCompat$Builder;->setContentTitle(Ljava/lang/CharSequence;)Landroid/support/v4/app/NotificationCompat$Builder;
 
-    .line 68
-    invoke-virtual {v1}, Landroid/media/AudioManager;->startBluetoothSco()V
+    move-result-object v1
+
+    const-string v2, "BT-Mono is active"
+
+    invoke-virtual {v1, v2}, Landroid/support/v4/app/NotificationCompat$Builder;->setContentText(Ljava/lang/CharSequence;)Landroid/support/v4/app/NotificationCompat$Builder;
+
+    move-result-object v1
 
     const/4 v2, 0x0
 
-    invoke-virtual {v1, v2}, Landroid/media/AudioManager;->setMode(I)V
-
-    :goto_0
-    invoke-static {p0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-virtual {v1, v2}, Landroid/support/v4/app/NotificationCompat$Builder;->setPriority(I)Landroid/support/v4/app/NotificationCompat$Builder;
 
     move-result-object v1
 
-    iput-object v1, p0, Lcom/bedoig/BTmono/BTservice;->preferences:Landroid/content/SharedPreferences;
+    invoke-virtual {v1, v0}, Landroid/support/v4/app/NotificationCompat$Builder;->setContentIntent(Landroid/app/PendingIntent;)Landroid/support/v4/app/NotificationCompat$Builder;
 
-    .line 97
-    iget-object v1, p0, Lcom/bedoig/BTmono/BTservice;->preferences:Landroid/content/SharedPreferences;
+    move-result-object v0
 
-    const-string v2, "AndroidColor"
+    const/4 v1, 0x0
 
-    const-string v4, "5"
+    invoke-virtual {v0, v1}, Landroid/support/v4/app/NotificationCompat$Builder;->setAutoCancel(Z)Landroid/support/v4/app/NotificationCompat$Builder;
 
-    invoke-interface {v1, v2, v4}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    move-result-object v0
 
-    move-result-object v1
+    invoke-virtual {v0}, Landroid/support/v4/app/NotificationCompat$Builder;->build()Landroid/app/Notification;
 
-    .line 101
-    sget v2, Lcom/bedoig/BTmono/BTservice;->currentapiVersion:I
+    move-result-object v0
 
-    if-lt v2, v3, :cond_1
+    const/4 v1, 0x1
 
-    .line 103
-    invoke-static {v1}, Lcom/bedoig/BTmono/BTmonoVars;->getStatusBarIdFromString(Ljava/lang/String;)I
+    invoke-virtual {p0, v1, v0}, Lcom/bedoig/BTmono/BTservice;->startForeground(ILandroid/app/Notification;)V
+    :try_end_fg
+    .catch Ljava/lang/Throwable; {:try_start_fg .. :try_end_fg} :catch_fg
 
-    goto :goto_1
+    :catch_fg
+    const/4 v0, 0x1
 
-    .line 106
-    :cond_1
-    invoke-static {v1}, Lcom/bedoig/BTmono/BTmonoVars;->getIdFromString(Ljava/lang/String;)I
+    invoke-static {v0}, Lcom/bedoig/BTmono/BTmonoVars;->setState(I)V
 
-    .line 111
-    :goto_1
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+    :try_start_audio
+    const-string v0, "audio"
 
-    .line 130
-    new-instance v1, Landroid/content/Intent;
+    invoke-virtual {p0, v0}, Lcom/bedoig/BTmono/BTservice;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
-    invoke-virtual {p0}, Lcom/bedoig/BTmono/BTservice;->getBaseContext()Landroid/content/Context;
+    move-result-object v0
 
-    move-result-object v2
+    check-cast v0, Landroid/media/AudioManager;
 
-    const-class v3, Lcom/bedoig/BTmono/BTmono;
+    if-eqz v0, :cond_audio_done
 
-    invoke-direct {v1, v2, v3}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+    const/4 v1, 0x1
 
-    .line 131
-    invoke-virtual {p0}, Lcom/bedoig/BTmono/BTservice;->getBaseContext()Landroid/content/Context;
+    invoke-virtual {v0, v1}, Landroid/media/AudioManager;->setBluetoothScoOn(Z)V
 
-    move-result-object v2
+    invoke-virtual {v0}, Landroid/media/AudioManager;->startBluetoothSco()V
 
-    const/4 v3, 0x0
+    const/4 v1, 0x0
 
-    const/high16 v4, 0x4000000
+    invoke-virtual {v0, v1}, Landroid/media/AudioManager;->setMode(I)V
+    :cond_audio_done
+    :try_end_audio
+    .catch Ljava/lang/Throwable; {:try_start_audio .. :try_end_audio} :catch_audio
 
-    invoke-static {v2, v3, v1, v4}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+    :catch_audio
+    :try_start_mic
+    invoke-static {p0}, Lcom/bedoig/BTmono/MicKeeper;->start(Landroid/content/Context;)V
+    :try_end_mic
+    .catch Ljava/lang/Throwable; {:try_start_mic .. :try_end_mic} :catch_mic
 
-    move-result-object v1
-
-    .line 133
-    new-instance v2, Landroid/support/v4/app/NotificationCompat$Builder;
-
-    const-string v4, "Channel_1"
-
-    invoke-direct {v2, p0, v4}, Landroid/support/v4/app/NotificationCompat$Builder;-><init>(Landroid/content/Context;Ljava/lang/String;)V
-
-    const v4, 0x7f07005c
-
-    .line 134
-    invoke-virtual {v2, v4}, Landroid/support/v4/app/NotificationCompat$Builder;->setSmallIcon(I)Landroid/support/v4/app/NotificationCompat$Builder;
-
-    move-result-object v2
-
-    const-string v4, "BTmono"
-
-    .line 135
-    invoke-virtual {v2, v4}, Landroid/support/v4/app/NotificationCompat$Builder;->setContentTitle(Ljava/lang/CharSequence;)Landroid/support/v4/app/NotificationCompat$Builder;
-
-    move-result-object v2
-
-    const-string v4, "BTmono is running"
-
-    .line 136
-    invoke-virtual {v2, v4}, Landroid/support/v4/app/NotificationCompat$Builder;->setContentText(Ljava/lang/CharSequence;)Landroid/support/v4/app/NotificationCompat$Builder;
-
-    move-result-object v2
-
-    .line 137
-    invoke-virtual {v2, v3}, Landroid/support/v4/app/NotificationCompat$Builder;->setPriority(I)Landroid/support/v4/app/NotificationCompat$Builder;
-
-    move-result-object v2
-
-    .line 138
-    invoke-virtual {v2, v1}, Landroid/support/v4/app/NotificationCompat$Builder;->setContentIntent(Landroid/app/PendingIntent;)Landroid/support/v4/app/NotificationCompat$Builder;
-
-    move-result-object v1
-
-    .line 139
-    invoke-virtual {v1, v3}, Landroid/support/v4/app/NotificationCompat$Builder;->setAutoCancel(Z)Landroid/support/v4/app/NotificationCompat$Builder;
-
-    move-result-object v1
-
-    .line 141
-    invoke-virtual {v1}, Landroid/support/v4/app/NotificationCompat$Builder;->build()Landroid/app/Notification;
-
-    move-result-object v1
-
-    .line 142
-    invoke-virtual {p0, v0, v1}, Lcom/bedoig/BTmono/BTservice;->startForeground(ILandroid/app/Notification;)V
-
+    :catch_mic
     return-void
 .end method
 
 .method public onDestroy()V
-    .locals 3
+    .locals 2
 
+    :try_start_0
     invoke-static {p0}, Lcom/bedoig/BTmono/MicKeeper;->stop(Landroid/content/Context;)V
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
+    :catch_0
     const/4 v0, 0x0
 
-    .line 159
     invoke-static {v0}, Lcom/bedoig/BTmono/BTmonoVars;->setState(I)V
 
+    :try_start_1
     const-string v1, "audio"
 
-    .line 162
     invoke-virtual {p0, v1}, Lcom/bedoig/BTmono/BTservice;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v1
 
     check-cast v1, Landroid/media/AudioManager;
 
-    .line 165
+    if-eqz v1, :cond_audio_off
+
     invoke-virtual {v1, v0}, Landroid/media/AudioManager;->setMode(I)V
 
-    .line 168
     invoke-virtual {v1}, Landroid/media/AudioManager;->stopBluetoothSco()V
 
-    .line 170
     invoke-virtual {v1, v0}, Landroid/media/AudioManager;->setBluetoothScoOn(Z)V
+    :cond_audio_off
+    :try_end_1
+    .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_1
 
-    const-string v1, "notification"
+    :catch_1
+    :try_start_2
+    const/4 v0, 0x1
 
-    .line 174
-    invoke-virtual {p0, v1}, Lcom/bedoig/BTmono/BTservice;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {p0, v0}, Lcom/bedoig/BTmono/BTservice;->stopForeground(Z)V
+    :try_end_2
+    .catch Ljava/lang/Throwable; {:try_start_2 .. :try_end_2} :catch_2
 
-    move-result-object v1
+    :catch_2
+    :try_start_3
+    const-string v0, "notification"
 
-    check-cast v1, Landroid/app/NotificationManager;
+    invoke-virtual {p0, v0}, Lcom/bedoig/BTmono/BTservice;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 175
-    invoke-virtual {v1}, Landroid/app/NotificationManager;->cancelAll()V
+    move-result-object v0
 
-    .line 179
-    sget v1, Lcom/bedoig/BTmono/BTservice;->currentapiVersion:I
+    check-cast v0, Landroid/app/NotificationManager;
 
-    const/16 v2, 0x8
+    if-eqz v0, :cond_notif_off
 
-    if-gt v1, v2, :cond_0
+    invoke-virtual {v0}, Landroid/app/NotificationManager;->cancelAll()V
+    :cond_notif_off
+    :try_end_3
+    .catch Ljava/lang/Throwable; {:try_start_3 .. :try_end_3} :catch_3
 
-    .line 182
-    invoke-static {p0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;
-
-    move-result-object v1
-
-    iput-object v1, p0, Lcom/bedoig/BTmono/BTservice;->preferences:Landroid/content/SharedPreferences;
-
-    .line 183
-    iget-object v1, p0, Lcom/bedoig/BTmono/BTservice;->preferences:Landroid/content/SharedPreferences;
-
-    const-string v2, "AndroidVersion"
-
-    invoke-interface {v1, v2, v0}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
-
-    move-result v0
-
-    if-nez v0, :cond_0
-
-    .line 188
-    invoke-static {}, Landroid/os/Process;->myPid()I
-
-    move-result v0
-
-    .line 189
-    invoke-static {v0}, Landroid/os/Process;->killProcess(I)V
-
-    :cond_0
+    :catch_3
     return-void
 .end method
 

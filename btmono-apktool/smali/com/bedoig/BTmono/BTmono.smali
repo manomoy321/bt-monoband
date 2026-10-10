@@ -122,10 +122,9 @@
 
     const/4 v0, 0x0
 
-    .line 307
     invoke-static {v0}, Lcom/bedoig/BTmono/BTmonoVars;->setState(I)V
 
-    .line 309
+    :try_start_0
     new-instance v0, Landroid/content/Intent;
 
     const-class v1, Lcom/bedoig/BTmono/BTservice;
@@ -133,22 +132,54 @@
     invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
     invoke-virtual {p0, v0}, Lcom/bedoig/BTmono/BTmono;->stopService(Landroid/content/Intent;)Z
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 311
+    :catch_0
+    :try_start_1
     invoke-virtual {p0}, Lcom/bedoig/BTmono/BTmono;->updateImages()V
+    :try_end_1
+    .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_1
 
+    :catch_1
     return-void
 .end method
 
 .method public On()V
-    .locals 2
+    .locals 3
 
     const/4 v0, 0x1
 
-    .line 297
     invoke-static {v0}, Lcom/bedoig/BTmono/BTmonoVars;->setState(I)V
 
-    .line 299
+    :try_start_0
+    new-instance v0, Landroid/content/Intent;
+
+    const-class v1, Lcom/bedoig/BTmono/BTservice;
+
+    invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v2, 0x1a
+
+    if-lt v1, v2, :cond_0
+
+    invoke-virtual {p0, v0}, Lcom/bedoig/BTmono/BTmono;->startForegroundService(Landroid/content/Intent;)Landroid/content/ComponentName;
+
+    goto :goto_0
+
+    :cond_0
+    invoke-virtual {p0, v0}, Lcom/bedoig/BTmono/BTmono;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :goto_0
+
+    :catch_0
+    move-exception v0
+
+    :try_start_1
     new-instance v0, Landroid/content/Intent;
 
     const-class v1, Lcom/bedoig/BTmono/BTservice;
@@ -156,28 +187,41 @@
     invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
     invoke-virtual {p0, v0}, Lcom/bedoig/BTmono/BTmono;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+    :try_end_1
+    .catch Ljava/lang/Throwable; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 301
+    :catch_1
+    :goto_0
+    :try_start_2
     invoke-virtual {p0}, Lcom/bedoig/BTmono/BTmono;->updateImages()V
+    :try_end_2
+    .catch Ljava/lang/Throwable; {:try_start_2 .. :try_end_2} :catch_2
 
+    :catch_2
     return-void
 .end method
 
 .method public ViewBToff(Landroid/view/View;)V
     .locals 0
 
-    .line 291
+    :try_start_0
     invoke-virtual {p0}, Lcom/bedoig/BTmono/BTmono;->Off()V
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
+    :catch_0
     return-void
 .end method
 
 .method public ViewBTon(Landroid/view/View;)V
     .locals 0
 
-    .line 286
+    :try_start_0
     invoke-virtual {p0}, Lcom/bedoig/BTmono/BTmono;->On()V
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
 
+    :catch_0
     return-void
 .end method
 
