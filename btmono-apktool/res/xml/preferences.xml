@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference android:enabled="true" android:title="Restart After Call" android:selectable="true" android:key="Restart" android:summary="Automatically re-enable audio routing after phone call ends" android:defaultValue="true" />
+    <CheckBoxPreference android:title="Auto 'On' at App Start" android:key="autoOn" android:defaultValue="false" />
+    <ListPreference android:enabled="true" android:entries="@array/colors" android:title="Android Color" android:selectable="true" android:key="AndroidColor" android:summary="Select custom status and icon color" android:defaultValue="5" android:dialogTitle="Android Color" android:entryValues="@array/colors_values" />
+</PreferenceScreen>

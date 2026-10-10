@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BTmono" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/color_primary_brand</item>
+        <item name="android:statusBarColor">@color/color_background</item>
+        <item name="android:navigationBarColor">@color/color_background</item>
+        <item name="android:windowBackground">@color/color_background</item>
+    </style>
+</resources>

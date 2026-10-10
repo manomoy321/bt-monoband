@@ -1,0 +1,20 @@
+# Android Build & Temporary Files
+.gradle/
+build/
+*/build/
+btmono-apktool/build/
+*.iml
+.idea/
+local.properties
+.DS_Store
+
+# Apktool temp / debug files
+btmono-rebuilt-unsigned.apk
+dist/
+inspect_rebuilt/
+btmono-decompiled/
+*.idsig
+
+# Workspace agent metadata
+.agents/
+android-reverse-engineering-skill/

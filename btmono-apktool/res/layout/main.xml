@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#0f172a"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16.0dp">
+
+    <!-- Header & Toggle Section -->
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16.0dp"
+        android:layout_marginBottom="16.0dp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@id/button1"
+                android:layout_width="0.0dp"
+                android:layout_height="56.0dp"
+                android:text="Turn On"
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_weight="1.0"
+                android:layout_marginEnd="8.0dp"
+                android:onClick="ViewBTon" />
+
+            <Button
+                android:id="@id/button2"
+                android:layout_width="0.0dp"
+                android:layout_height="56.0dp"
+                android:text="Turn Off"
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_weight="1.0"
+                android:layout_marginStart="8.0dp"
+                android:onClick="ViewBToff" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Main Visual Android Status Icon -->
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0.0dp"
+        android:layout_weight="1.0">
+
+        <ImageView
+            android:id="@id/imageView1"
+            android:layout_width="160.0dp"
+            android:layout_height="160.0dp" />
+
+    </LinearLayout>
+
+    <!-- Status & Premium Badge Section -->
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16.0dp">
+
+        <TextView
+            android:id="@id/TextView1"
+            android:textSize="14.0sp"
+            android:textStyle="bold"
+            android:textColor="#10b981"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="✓ Full Version Unlocked" />
+
+    </LinearLayout>
+
+    <!-- Volume & Info Section -->
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="#1e293b"
+        android:padding="16.0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16.0dp">
+
+        <TextView
+            android:id="@id/TextView2"
+            android:textSize="15.0sp"
+            android:textStyle="bold"
+            android:textColor="#f8fafc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Media Volume"
+            android:layout_marginBottom="8.0dp" />
+
+        <SeekBar
+            android:id="@id/seek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="15"
+            android:progress="7"
+            android:layout_marginBottom="12.0dp" />
+
+        <TextView
+            android:id="@id/TextView3"
+            android:textSize="11.0sp"
+            android:textColor="#94a3b8"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Audio is actively routed to Bluetooth Mono SCO channel.\nVolume slider controls stream volume." />
+
+    </LinearLayout>
+
+</LinearLayout>

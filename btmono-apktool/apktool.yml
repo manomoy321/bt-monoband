@@ -1,0 +1,16 @@
+version: 3.0.3
+apkFileName: com-bedoig-btmono-16-61972428-b85d969f0bee777e9cd6351e0a313f4d.apk
+usesFramework:
+  ids:
+  - 1
+sdkInfo:
+  minSdkVersion: 21
+  targetSdkVersion: 28
+versionInfo:
+  versionCode: 2026
+  versionName: 2026.1
+resourcesInfo:
+  packageId: 127
+doNotCompress:
+- arsc
+- png
