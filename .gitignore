@@ -10,6 +10,7 @@ local.properties
 
 # Apktool temp / debug files
 btmono-rebuilt-unsigned.apk
+bt-mono-unsigned.apk
 dist/
 inspect_rebuilt/
 btmono-decompiled/

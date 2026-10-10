@@ -1,32 +1,47 @@
-# BTmono (`bt-monoband`) 🎧 — Free & Open-Source Bluetooth Mono Audio Router for Android
+# BT-Mono (`bt-monoband`) 🎙️🎧 — Bluetooth Headphone Mic for Default Camera & Mono Audio Router
 
 [![Android Compatibility](https://img.shields.io/badge/Android-5.0_to_16+_(API_21--35+)-3DDC84?logo=android&logoColor=white)](https://github.com/manomoy321/bt-monoband)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/manomoy321/bt-monoband/blob/main/LICENSE)
-[![Latest Release](https://img.shields.io/badge/Release-v2026.1_Unlocked-brightgreen)](https://github.com/manomoy321/bt-monoband/releases/tag/v2026.1)
-[![Download APK](https://img.shields.io/badge/Download-BTmono__v2026.1.apk-blue?logo=android)](https://github.com/manomoy321/bt-monoband/releases/download/v2026.1/BTmono-2026-Upgraded.apk)
+[![Latest Release](https://img.shields.io/badge/Release-v2026.1_BT--Mono-brightgreen)](https://github.com/manomoy321/bt-monoband/releases/tag/v2026.1)
+[![Download BT-Mono APK](https://img.shields.io/badge/Download-BT--Mono.apk-blue?logo=android)](https://github.com/manomoy321/bt-monoband/releases/download/v2026.1/BT-Mono.apk)
 [![Zero Ads](https://img.shields.io/badge/Ads-Completely_Removed-success)](#)
 [![No Paywalls](https://img.shields.io/badge/Premium-100%25_Free-orange)](#)
 
-> **The modern, crash-free, and 100% free upgrade to BTmono.**  
-> Route all multimedia audio (music, podcasts, navigation, YouTube, audiobooks) and Bluetooth microphone recording through your mono Bluetooth headset, car hands-free system, or hearing aid.
+> **Use your Bluetooth headphone or earbuds as an external wireless microphone in your phone's default camera app all the time.**  
+> Includes hardware SCO mic lock, active audio keep-alive, media routing, zero ads, and 100% free unlocked features for Android 5.0 through 15 & 16+.
 
 ---
 
-## 📥 Direct Download
+## 📥 Direct Download (BT-Mono APK)
 
-* 🚀 **[Direct Download: BTmono-2026-Upgraded.apk (v2026.1 Release)](https://github.com/manomoy321/bt-monoband/releases/download/v2026.1/BTmono-2026-Upgraded.apk)** *(2.23 MiB — Signed with v1, v2, v3 schemes, valid through 2054)*
+* 🚀 **[Direct Download: BT-Mono.apk (v2026.1 Production Build)](https://github.com/manomoy321/bt-monoband/releases/download/v2026.1/BT-Mono.apk)** *(2.23 MiB — Signed with v1, v2, v3 schemes, valid through 2054)*
 * 📦 **[View GitHub Release v2026.1](https://github.com/manomoy321/bt-monoband/releases/tag/v2026.1)**
-* 📁 **[Download Directly from Repository Tree](https://github.com/manomoy321/bt-monoband/raw/main/BTmono-2026-Upgraded.apk)**
+* 📁 **[Download Directly from Repository Tree](https://github.com/manomoy321/bt-monoband/raw/main/BT-Mono.apk)**
 
 ---
 
-## 🔍 Why BTmono? (Overview & Problem Solved)
+## 🎙️ Primary Purpose: Bluetooth Mic for Default Camera Video Recording
+
+By default, stock Android camera apps (including Samsung Camera, Google Pixel Camera, Xiaomi, etc.) **ignore connected Bluetooth headphones** when filming video, forcing audio recording through the phone's built-in phone body microphones.
+
+### How BT-Mono Fixes This:
+1. **Hardware SCO Mic Lock**: `BT-Mono` initiates a bidirectional Bluetooth SCO link with `MODE_IN_COMMUNICATION` and an active `AudioRecord` background stream. This prevents the Android Audio HAL from powering down or dropping the Bluetooth microphone when you switch to your camera.
+2. **Auto-Granted Runtime Permissions**: Prompts for `RECORD_AUDIO` and `BLUETOOTH_CONNECT` upon opening, eliminating silent permission blocks on modern Android versions.
+3. **Works While Filming Video**: Keep `BT-Mono` turned **On**, open your phone's default Camera app, and begin recording video — audio is captured directly from your wireless headset.
+
+> **💡 Samsung Galaxy Camera Tip (One UI 5 / 6 / 7)**:
+> In the Samsung Camera app, you can also swipe to **Pro Video** mode: tap the **MIC** button at the bottom and select **BT** (Bluetooth) for high-definition studio microphone capture!
+
+---
+
+## 🔍 Why BT-Mono? (Overview & Problem Solved)
 
 By default, the Android operating system only routes phone calls through mono Bluetooth headsets (using the Bluetooth SCO / Hands-Free Profile - HFP). Regular media audio (music, YouTube, GPS turn-by-turn directions, social media audio) is restricted to stereo A2DP devices or played through the phone's built-in speaker.
 
-**BTmono bridges this gap** by forcing media audio streams through the Bluetooth SCO channel.
+**BT-Mono bridges this gap** by forcing media audio streams through the Bluetooth SCO channel.
 
 ### What Makes This 2026 Upgraded Edition Better?
+* **Bluetooth Headphone as Wireless Camera Mic**: Fixes the missing recording stream so your Bluetooth mic works with camera video.
 * **100% Free Forever**: All previous in-app paywalls, donation prompts, and AdMob tracking have been permanently removed.
 * **All Color Themes & Features Unlocked**: Access all 9 custom status color themes and the *"Restart After Call"* automation toggle for free.
 * **Android 14, 15 & 16 Compatible**: Overcomes Google's minimum SDK deprecation block (`INSTALL_FAILED_DEPRECATED_SDK_VERSION`) and Samsung One UI 6+ installation restrictions.

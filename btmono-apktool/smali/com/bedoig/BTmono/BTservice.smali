@@ -96,6 +96,8 @@
 
     invoke-direct {p0}, Lcom/bedoig/BTmono/BTservice;->createNotificationChannel()V
 
+    invoke-static {p0}, Lcom/bedoig/BTmono/MicKeeper;->start(Landroid/content/Context;)V
+
     const/4 v0, 0x1
 
     .line 63
@@ -253,6 +255,8 @@
 
 .method public onDestroy()V
     .locals 3
+
+    invoke-static {p0}, Lcom/bedoig/BTmono/MicKeeper;->stop(Landroid/content/Context;)V
 
     const/4 v0, 0x0
 

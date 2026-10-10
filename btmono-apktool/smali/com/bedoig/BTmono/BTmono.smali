@@ -192,6 +192,8 @@
     .line 78
     invoke-virtual {p0, p1}, Lcom/bedoig/BTmono/BTmono;->setContentView(I)V
 
+    invoke-direct {p0}, Lcom/bedoig/BTmono/BTmono;->requestRequiredPermissions()V
+
     .line 82
     invoke-static {p0}, Landroid/preference/PreferenceManager;->getDefaultSharedPreferences(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
@@ -532,3 +534,43 @@
 
     return-void
 .end method
+
+.method private requestRequiredPermissions()V
+    .locals 5
+
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+
+    const/16 v1, 0x17
+
+    if-lt v0, v1, :cond_skip
+
+    const/4 v0, 0x3
+
+    new-array v0, v0, [Ljava/lang/String;
+
+    const/4 v1, 0x0
+
+    const-string v2, "android.permission.RECORD_AUDIO"
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x1
+
+    const-string v2, "android.permission.BLUETOOTH_CONNECT"
+
+    aput-object v2, v0, v1
+
+    const/4 v1, 0x2
+
+    const-string v2, "android.permission.POST_NOTIFICATIONS"
+
+    aput-object v2, v0, v1
+
+    const/16 v1, 0x3e9
+
+    invoke-virtual {p0, v0, v1}, Landroid/app/Activity;->requestPermissions([Ljava/lang/String;I)V
+
+    :cond_skip
+    return-void
+.end method
+
